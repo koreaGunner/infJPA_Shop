@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+    <!-- 데이터베이스 당 하나 -->
+    <persistence-unit name="hello">
+        <properties>
+            <!-- 필수 속성 -->
+            <property name="jakarta.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="jakarta.persistence.jdbc.user" value="sa"/>
+            <property name="jakarta.persistence.jdbc.password" value=""/>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/jpashop"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+            <!--<property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect"/>--> <!-- oracle방언 -->
+            <!--<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>--> <!-- mysql방언 -->
+
+            <!-- 옵션 -->
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments"  value="true"/>
+            <property name="hibernate.jdbc.batch_size"  value="10"/> <!-- 지연저장소에 쌓을 수 있는 쿼리 개수 -->
+            <property name="hibernate.hbm2ddl.auto" value="create" /> <!-- 기존의 테이블을 drop 시키고 create함 -->
+            <!--<property name="hibernate.hbm2ddl.auto" value="create-drop" />--> <!-- create와 같으나 종료시점에 테이블 drop -->
+            <!--<property name="hibernate.hbm2ddl.auto" value="update" />--> <!-- 변경분만 반영(컬럼 추가는 가능하나 삭제는 불가능) -->
+            <!--<property name="hibernate.hbm2ddl.auto" value="validate" />--> <!-- 엔티티와 테이블이 정상 매핑되었는지만 확인(안됐을 시 오류) -->
+            <!-- !!!!운영장비에는 절대 create, create-drop, update 사용하면 안된다!! -->
+        </properties>
+    </persistence-unit>
+
+</persistence>
